@@ -67,6 +67,9 @@ dependencies {
     implementation(libs.mlkit.objectdetector)
     implementation(libs.mlkit.face.detection)
 
+    // 로그 확인
+    implementation(libs.timber)
+
     // 스크린샷 투명 처리
     implementation(libs.androidx.core.splashscreen)
 }

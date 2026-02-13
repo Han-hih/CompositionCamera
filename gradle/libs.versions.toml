@@ -16,6 +16,7 @@ mlkitFaceDetection = "16.1.7"
 cameraLifecycle = "1.5.3"
 cameraView = "1.5.3"
 coreSplashscreen = "1.0.1"
+timber = "5.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -52,9 +53,10 @@ camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "
 
 #스크린샷 투명화
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+#로그 확인
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
