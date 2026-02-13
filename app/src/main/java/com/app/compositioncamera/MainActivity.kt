@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.app.compositioncamera.camera.presentation.camera.CameraScreen
 import com.app.compositioncamera.ui.theme.CompositionCameraTheme
 
 class MainActivity : ComponentActivity() {
