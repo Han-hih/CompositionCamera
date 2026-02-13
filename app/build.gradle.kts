@@ -66,4 +66,7 @@ dependencies {
     implementation(libs.accompanist.permissions)
     implementation(libs.mlkit.objectdetector)
     implementation(libs.mlkit.face.detection)
+
+    // 스크린샷 투명 처리
+    implementation(libs.androidx.core.splashscreen)
 }
