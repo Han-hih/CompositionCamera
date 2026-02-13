@@ -1,7 +1,6 @@
 package com.app.compositioncamera.camera.presentation.camera
 
 import android.Manifest
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,7 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
@@ -23,7 +22,7 @@ import com.google.accompanist.permissions.rememberPermissionState
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun CameraScreen() {
-    val viewModel: CameraViewModel = viewModel(factory = CameraViewModel.factory(LocalContext.current))
+    val viewModel: CameraViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsState()
     var hasPermissionResult by remember { mutableStateOf(false) }
     val cameraPermissionState = rememberPermissionState(

@@ -3,12 +3,13 @@ package com.app.compositioncamera.camera.domain.usecase
 import com.app.compositioncamera.camera.domain.model.DeviceRotation
 import com.app.compositioncamera.camera.domain.model.HorizonGuideState
 import com.app.compositioncamera.camera.domain.repository.HorizonRepository
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.runningFold
 
-class ObserveHorizonGuideUseCase(
+class ObserveHorizonGuideUseCase @Inject constructor(
     private val horizonRepository: HorizonRepository
 ) {
     operator fun invoke(): Flow<HorizonGuideState> {

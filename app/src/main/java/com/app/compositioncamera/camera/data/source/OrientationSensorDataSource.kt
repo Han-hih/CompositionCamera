@@ -8,13 +8,15 @@ import android.hardware.SensorManager
 import android.view.OrientationEventListener
 import com.app.compositioncamera.camera.domain.model.DeviceRotation
 import com.app.compositioncamera.camera.domain.model.OrientationSample
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 
-class OrientationSensorDataSource(
-    context: Context
+class OrientationSensorDataSource @Inject constructor(
+    @ApplicationContext context: Context
 ) {
     private val appContext = context.applicationContext
 

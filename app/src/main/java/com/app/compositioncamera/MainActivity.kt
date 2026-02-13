@@ -19,7 +19,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.app.compositioncamera.camera.presentation.camera.CameraScreen
 import com.app.compositioncamera.ui.theme.CompositionCameraTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private var backPressedTime: Long = 0
 
