@@ -6,8 +6,10 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -69,6 +71,13 @@ internal fun CameraPreviewContent(horizonGuideState: HorizonGuideState) {
         CompositionGuideOverlay(
             horizonGuideState = horizonGuideState,
             deviceWidthPx = deviceWidthPx
+        )
+
+        HorizonFeedbackText(
+            horizonGuideState = horizonGuideState,
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .padding(top = 48.dp)
         )
     }
 }
