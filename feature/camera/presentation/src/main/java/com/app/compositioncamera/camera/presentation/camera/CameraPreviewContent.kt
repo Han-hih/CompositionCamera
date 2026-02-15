@@ -1,5 +1,6 @@
 package com.app.compositioncamera.camera.presentation.camera
 
+import android.util.Log
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -20,7 +21,6 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.app.compositioncamera.camera.domain.model.HorizonGuideState
-import com.app.compositioncamera.util.Logx
 
 @Composable
 internal fun CameraPreviewContent(horizonGuideState: HorizonGuideState) {
@@ -62,7 +62,7 @@ internal fun CameraPreviewContent(horizonGuideState: HorizonGuideState) {
                             )
                         }
                     } catch (e: Exception) {
-                        Logx.e(throwable = e, message = "Camera binding failed", tag = "CameraX")
+                        Log.e("CameraX", "Camera binding failed", e)
                     }
                 }, executor)
             }

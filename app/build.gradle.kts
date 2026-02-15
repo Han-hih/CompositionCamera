@@ -38,11 +38,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":feature:camera:presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
@@ -57,16 +56,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    implementation(libs.androidx.camera.core)
-    implementation(libs.androidx.camera.camera2)
-    implementation(libs.camera.lifecycle)
-    implementation(libs.camera.view)
-
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.accompanist.permissions)
-    implementation(libs.mlkit.objectdetector)
-    implementation(libs.mlkit.face.detection)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 

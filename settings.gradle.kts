@@ -21,4 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "CompositionCamera"
 include(":app")
+include(":feature:camera:domain")
+include(":feature:camera:data")
+include(":feature:camera:presentation")
  
