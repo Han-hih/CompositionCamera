@@ -11,7 +11,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.dp
-import com.app.compositioncamera.camera.domain.model.DeviceRotation
 import com.app.compositioncamera.camera.domain.model.HorizonGuideState
 import kotlin.math.abs
 import kotlin.math.cos
@@ -22,12 +21,7 @@ internal fun CompositionGuideOverlay(
     horizonGuideState: HorizonGuideState,
     deviceWidthPx: Float
 ) {
-    val maxDisplayRollDegrees = 35f
-    val displayRollDeg = horizonGuideState.rollDeg.coerceIn(-maxDisplayRollDegrees, maxDisplayRollDegrees)
-    val targetLineAngleDeg = when (horizonGuideState.deviceRotation) {
-        DeviceRotation.ROTATION_90, DeviceRotation.ROTATION_270 -> 90f + displayRollDeg
-        else -> displayRollDeg
-    }
+    val targetLineAngleDeg = calculateGuideLineAngleDeg(horizonGuideState)
     val animatedLineAngleDeg by animateFloatAsState(
         targetValue = targetLineAngleDeg,
         animationSpec = tween(durationMillis = 70),

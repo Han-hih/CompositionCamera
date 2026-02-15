@@ -27,12 +27,12 @@ class OrientationSensorDataSource @Inject constructor(
         val orientationListener = object : OrientationEventListener(appContext) {
             override fun onOrientationChanged(orientation: Int) {
                 if (orientation == ORIENTATION_UNKNOWN) return
-                deviceRotation = when {
-                    orientation in 70..110 -> DeviceRotation.ROTATION_270
-                    orientation in 160..200 -> DeviceRotation.ROTATION_180
-                    orientation in 250..290 -> DeviceRotation.ROTATION_90
-                    orientation >= 340 || orientation <= 20 -> DeviceRotation.ROTATION_0
-                    else -> deviceRotation
+                val quadrant = ((orientation + 45) % 360) / 90
+                deviceRotation = when (quadrant) {
+                    1 -> DeviceRotation.ROTATION_270
+                    2 -> DeviceRotation.ROTATION_180
+                    3 -> DeviceRotation.ROTATION_90
+                    else -> DeviceRotation.ROTATION_0
                 }
             }
         }

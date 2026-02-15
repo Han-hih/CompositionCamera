@@ -1,13 +1,13 @@
 package com.app.compositioncamera.camera.presentation.camera
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.app.compositioncamera.camera.domain.model.HorizonGuideState
@@ -31,11 +31,10 @@ internal fun HorizonFeedbackText(
         color = textColor,
         fontSize = 14.sp,
         fontWeight = FontWeight.SemiBold,
+        textAlign = TextAlign.Center,
+        maxLines = 1,
         modifier = modifier
-            .background(
-                color = Color.Black.copy(alpha = 0.48f),
-                shape = RoundedCornerShape(14.dp)
-            )
+            .width(260.dp)
             .padding(horizontal = 12.dp, vertical = 8.dp)
     )
 }
