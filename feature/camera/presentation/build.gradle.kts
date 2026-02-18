@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.camera.lifecycle)
     implementation(libs.camera.view)
     implementation(libs.mlkit.objectdetector)
+    implementation(libs.mlkit.face.detection)
 
     implementation(libs.accompanist.permissions)
     implementation(libs.androidx.hilt.navigation.compose)
