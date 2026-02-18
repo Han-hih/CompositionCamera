@@ -47,7 +47,11 @@ fun CameraScreen() {
         contentAlignment = Alignment.Center
     ) {
         if (cameraPermissionState.status.isGranted) {
-            CameraPreviewContent(horizonGuideState = uiState.horizonGuideState)
+            CameraPreviewContent(
+                horizonGuideState = uiState.horizonGuideState,
+                subjectGuideMode = uiState.subjectGuideMode,
+                onSubjectGuideModeChanged = viewModel::setSubjectGuideMode
+            )
         } else if (hasPermissionResult) {
             CameraPermissionDeniedContent()
         }

@@ -86,5 +86,6 @@ internal fun CompositionGuideOverlay(
             strokeWidth = 2.dp.toPx(),
             cap = StrokeCap.Round
         )
+
     }
 }
