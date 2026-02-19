@@ -1,6 +1,8 @@
 package com.app.compositioncamera.camera.di
 
 import com.app.compositioncamera.camera.data.repository.HorizonRepositoryImpl
+import com.app.compositioncamera.camera.data.repository.OpenAiCoachingRepositoryImpl
+import com.app.compositioncamera.camera.domain.repository.AiCoachingRepository
 import com.app.compositioncamera.camera.domain.repository.HorizonRepository
 import dagger.Binds
 import dagger.Module
@@ -16,4 +18,10 @@ abstract class CameraDataModule {
     abstract fun bindHorizonRepository(
         impl: HorizonRepositoryImpl
     ): HorizonRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindAiCoachingRepository(
+        impl: OpenAiCoachingRepositoryImpl
+    ): AiCoachingRepository
 }
