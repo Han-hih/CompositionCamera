@@ -50,7 +50,9 @@ fun CameraScreen() {
             CameraPreviewContent(
                 horizonGuideState = uiState.horizonGuideState,
                 subjectGuideMode = uiState.subjectGuideMode,
-                onSubjectGuideModeChanged = viewModel::setSubjectGuideMode
+                onSubjectGuideModeChanged = viewModel::setSubjectGuideMode,
+                aiCoachingText = uiState.aiCoachingText,
+                onRequestAiCoaching = viewModel::requestAiCoaching
             )
         } else if (hasPermissionResult) {
             CameraPermissionDeniedContent()
