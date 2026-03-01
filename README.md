@@ -49,38 +49,37 @@ CompositionCamera/
 - `CAMERA`
 - `INTERNET`
 
+## 클린 아키텍처
+- 이 앱에서 실제로 분리한 기능
+  - `feature:camera:presentation`
+    - `CameraScreen`, `CameraPreviewContent`
+    - 인물/사물 모드 UI, 수평선/가이드 오버레이 렌더링
+    - 얼굴/사물 감지 결과를 화면에 표시하고 구도 점수 문구 생성
+  - `feature:camera:domain`
+    - `ObserveHorizonGuideUseCase`
+    - `GetAiCoachingFeedbackUseCase`
+    - `HorizonRepository`, `AiCoachingRepository` 인터페이스
+  - `feature:camera:data`
+    - `OrientationSensorDataSource`, `HorizonRepositoryImpl`
+    - `OpenAiCoachingRepositoryImpl` (OpenAI API 호출)
+    - Hilt DI 바인딩(`CameraDataModule`)
+
+- 현재 앱의 실제 데이터 흐름
+  - 센서 값 수집(`data`) -> 수평 상태 계산(`domain`) -> 수평선/피드백 렌더링(`presentation`)
+  - 얼굴/사물 감지(`presentation`) -> 구도 메트릭 생성(`presentation`) -> AI 문구 요청(`domain -> data`) -> 화면 표시(`presentation`)
+
+- 의존 방향(현재 코드 기준)
+  - `app -> presentation`
+  - `presentation -> domain`
+  - `presentation -> data` (감지/카메라 관련 구현 사용)
+  - `data -> domain` (인터페이스 구현)
+
 ## 모듈별 책임 다이어그램
 
 ```mermaid
-flowchart LR
+flowchart TB
     A["app"] --> P["feature:camera:presentation"]
     P --> D["feature:camera:domain"]
     P --> R["feature:camera:data"]
     R --> D
-
-    A1["앱 진입점<br/>
-Application/Activity<br/>
-권한 진입"]:::app
-    P1["UI/상태관리<br/>
-Compose Screen<br/>
-ViewModel<br/>
-오버레이 렌더링"]:::presentation
-    D1["비즈니스 규칙<br/>
-UseCase<br/>
-Repository 인터페이스<br/>
-도메인 모델"]:::domain
-    R1["구현/외부 연동<br/>
-Sensor 데이터 소스<br/>
-ML Kit/OpenAI API 구현<br/>
-DI 바인딩"]:::data
-
-    A --- A1
-    P --- P1
-    D --- D1
-    R --- R1
-
-    classDef app fill:#e8f0ff,stroke:#4a6ee0,color:#1e2a52
-    classDef presentation fill:#e8fff5,stroke:#1f9d62,color:#13432c
-    classDef domain fill:#fff8e8,stroke:#c38b1e,color:#5a3d05
-    classDef data fill:#ffeef4,stroke:#c73b73,color:#5a1732
 ```
