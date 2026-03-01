@@ -58,10 +58,21 @@ flowchart LR
     P --> R["feature:camera:data"]
     R --> D
 
-    A1["앱 진입점\nApplication/Activity\n권한 진입"]:::app
-    P1["UI/상태관리\nCompose Screen\nViewModel\n오버레이 렌더링"]:::presentation
-    D1["비즈니스 규칙\nUseCase\nRepository 인터페이스\n도메인 모델"]:::domain
-    R1["구현/외부 연동\nSensor 데이터 소스\nML Kit/OpenAI API 구현\nDI 바인딩"]:::data
+    A1["앱 진입점<br/>
+Application/Activity<br/>
+권한 진입"]:::app
+    P1["UI/상태관리<br/>
+Compose Screen<br/>
+ViewModel<br/>
+오버레이 렌더링"]:::presentation
+    D1["비즈니스 규칙<br/>
+UseCase<br/>
+Repository 인터페이스<br/>
+도메인 모델"]:::domain
+    R1["구현/외부 연동<br/>
+Sensor 데이터 소스<br/>
+ML Kit/OpenAI API 구현<br/>
+DI 바인딩"]:::data
 
     A --- A1
     P --- P1
